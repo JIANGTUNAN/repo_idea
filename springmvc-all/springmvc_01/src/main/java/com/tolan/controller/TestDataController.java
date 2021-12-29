@@ -6,17 +6,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @RestController
 public class TestDataController {
 
     //紧耦合参数获取方式
     @RequestMapping("/getParamByRequest")
-    public String getParam(HttpServletRequest request, HttpServletResponse response) {
+    public void getParam(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         System.out.println("getParamByRequest: username:" + username + "  --password:" + password);
-        return "getParamSuccess";
+        response.sendRedirect(request.getContextPath() + "/success.jsp");
     }
 
     //解耦合参数获取方式
