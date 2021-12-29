@@ -25,6 +25,7 @@ public class FileController {
     @ResponseBody
     @RequestMapping("/fileUpload")
     public Map<String, String> fileUpload(MultipartFile headPhoto, HttpServletRequest request) throws IOException {
+
         Map<String, String> map = new HashMap<>();
 
         //控制文件大小
@@ -71,11 +72,16 @@ public class FileController {
 
     @RequestMapping("/fileDownload")
     public void fileDownLoad(String photo, String filetype, HttpServletResponse response) throws IOException {
-        System.out.println(photo + filetype);
+
+        //设置消息头信息，告诉浏览器这是个文件
         response.setHeader("Content-Disposition", "attachment;filename=" + photo);
+        //设置文件类型
         response.setContentType(filetype);
+        //文件地址 输入流
         InputStream inputStream = new URL("http://localhost:8080/ssm02/upload/" + photo).openStream();
+        //请求体 输出流
         ServletOutputStream outputStream = response.getOutputStream();
+        //输入输出 拷贝
         IOUtils.copy(inputStream, outputStream);
     }
 }

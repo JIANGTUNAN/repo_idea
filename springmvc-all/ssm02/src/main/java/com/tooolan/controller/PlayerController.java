@@ -15,12 +15,14 @@ public class PlayerController {
     @Autowired
     private PlayerService playerService;
 
+    //用户注册
     @RequestMapping(value = "/addPlayer")
     public String addPlayer(Player player) {
         playerService.addPlayer(player);
         return "redirect:showPlayer.jsp";
     }
 
+    //查看所有用户
     @RequestMapping("getAllPlayer")
     @ResponseBody
     public List<Player> getAllPlayer() {
