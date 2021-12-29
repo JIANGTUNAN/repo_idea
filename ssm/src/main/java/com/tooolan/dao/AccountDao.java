@@ -18,4 +18,13 @@ public interface AccountDao {
     void deleteBatch(Integer[] ids);
     
     void update2(Account account);
+
+    void t1();
+    void t2();
+    void t3();
+    void t4();
+    void t5();
+    void t6();
+    void t7();
+
 }
