@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--加载properties-->
+    <properties resource="jdbc.properties"/>
+
+    <!--实体类起别名-->
+    <typeAliases>
+        <package name="com.tooolan.domain"/>
+    </typeAliases>
+
+    <!--配置运行环境-->
+    <environments default="dev">
+        <!--开发运行环境-->
+        <environment id="dev">
+            <!--事务管理-->
+            <transactionManager type="JDBC"/>
+            <!--数据源-->
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--加载映射配置文件-->
+    <mappers>
+        <package name="com.tooolan.dao"/>
+    </mappers>
+
+</configuration>
