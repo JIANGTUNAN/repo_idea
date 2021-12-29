@@ -16,4 +16,5 @@ public interface AccountDao {
     void update(Account account);
 
     void deleteBatch(Integer[] ids);
+
 }
